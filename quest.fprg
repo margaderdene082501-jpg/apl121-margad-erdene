@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="taxini tarif"/>
+        <attribute name="authors" value="dell"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-10-27 11:34:13 PM"/>
+        <attribute name="created" value="ZGVsbDtERVNLVE9QLU5DUzZDNUo7MjAyNi0xMC0yNzswOTo1NjowNiBQTTsyNzY2"/>
+        <attribute name="edited" value="ZGVsbDtERVNLVE9QLU5DUzZDNUo7MjAyNi0xMC0yNzsxMTozNDoxMyBQTTsyOzI4NjI="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="dis" type="Real" array="False" size=""/>
+            <input variable="dis"/>
+            <do expression="dis&lt;0 OR dis&gt;100"/>
+            <declare name="waitmin" type="Real" array="False" size=""/>
+            <input variable="waitmin"/>
+            <do expression="waitmin&lt;0 or waitmin&gt;180"/>
+            <declare name="hour" type="Integer" array="False" size=""/>
+            <input variable="hour"/>
+            <do expression="hour&lt;0 or hour&gt;23"/>
+            <declare name="fare" type="Real" array="False" size=""/>
+            <assign variable="fare" expression="dis*3500"/>
+            <if expression="waitmin&gt;3">
+                <then>
+                    <assign variable="fare" expression="fare+(waitmin-3)*2000"/>
+                </then>
+                <else/>
+            </if>
+            <if expression="hour&gt;=0 &amp;&amp; hour&lt;6">
+                <then>
+                    <assign variable="fare" expression="fare*1.15"/>
+                </then>
+                <else/>
+            </if>
+            <output expression="fare" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
